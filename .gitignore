@@ -1,6 +1,6 @@
+.DS_Store
 node_modules
-public
-.log
-
-resources/_gen/assets/css/
-/assets/dependencies
+yarn-error.log
+/cypress/screenshots/
+/__sapper__/
+/static/index.css

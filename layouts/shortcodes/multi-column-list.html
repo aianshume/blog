@@ -1,7 +1,0 @@
-<ul class="c-multi-column-list list-none">
-  {{ range split .Inner "- " }} {{ if and (gt (len .) 1) (ne "\n\n" . )  }}
-  <li>
-    {{ . }}
-  </li>
-  {{ end }} {{ end }}
-</ul>
