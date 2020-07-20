@@ -13,6 +13,7 @@
 
 <script>
   import Container from '../components/Container.svelte'
+  import Tag from '../components/Tag.svelte'
 
   export let post
 </script>
@@ -24,7 +25,7 @@
 <Container>
   <header>
     {#each post.tags as tag}
-      <a href="/tags/{tag.slug}" rel="prefetch">{tag.name}</a>
+      <Tag tag="{tag}" />
     {/each}
     <p>{post.printDate} ~ {post.printReadingTime}</p>
     <h1 class="text-xl">{post.title}</h1>

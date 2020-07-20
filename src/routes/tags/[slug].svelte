@@ -20,7 +20,7 @@
 </script>
 
 <Container>
-  <h1>{tag.name}</h1>
+  <h1 class="text-2xl font-bold">{tag.name}</h1>
   {#each posts as post}
     <Summary post="{post}" />
   {/each}
