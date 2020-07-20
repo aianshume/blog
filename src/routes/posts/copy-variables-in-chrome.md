@@ -9,6 +9,8 @@ While working on a React project today, I was looking to copy a property that
 was passed down to a component. After searching around, I found out it's
 surprisingly easy.
 
+<!--more-->
+
 1. Open up the
    [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
    tab within the Chrome inspector.

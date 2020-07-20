@@ -15,6 +15,8 @@ button. This worked great as it gave me real-time updates across multiple
 browser sessions whenever I clicked the button. However, looking at the
 compiled, minified bundle, I noticed it had added over 220 KB!
 
+<!--more-->
+
 With that in mind, I don’t think the trade-off for that much code for such a
 simple likes button makes any sense. This led me to explore other options and
 decided that cloud functions might be a great fit for this. I’ve seen coworkers

@@ -11,6 +11,8 @@ application state tree. At the time your application scales in complexity, that
 single event may need to perform several actions at once and perform some sort
 business logic before they are dispatched.
 
+<!--more-->
+
 ## A Potential Solution
 
 Recently I’ve been using [Redux Thunk](https://github.com/reduxjs/redux-thunk)

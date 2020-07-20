@@ -1,13 +1,15 @@
 <script context="module">
   export function preload({ params, query }) {
-    return this.fetch(`blog.json`)
+    return this.fetch(`index.json`)
       .then((r) => r.json())
       .then((posts) => ({ posts }))
   }
 </script>
 
 <script>
-  import Summary from '../components/Summary.svelte'
+  import Container from '../components/Container.svelte'
+  import Posts from '../components/Posts.svelte'
+
   export let posts
 </script>
 
@@ -20,8 +22,6 @@
   />
 </svelte:head>
 
-<div class="container">
-  {#each posts as post}
-    <Summary post="{post}" />
-  {/each}
-</div>
+<Container>
+  <Posts posts="{posts}" />
+</Container>

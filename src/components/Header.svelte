@@ -1,13 +1,11 @@
 <script>
   import Logo from './Logo.svelte'
   import Nav from './Nav.svelte'
-
-  export let segment
 </script>
 
 <header>
   <Logo />
-  <Nav segment="segment" />
+  <Nav />
 </header>
 
 <style>

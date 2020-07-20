@@ -13,6 +13,8 @@ I want to highlight one technique you can use to traverse an array containing an
 infinite number of nested objects. You'll learn how to accumulate all objects
 and return a single object you can use to reference any entry by ID.
 
+<!--more-->
+
 ## Building out the Function
 
 First, we'll start with the data, an object with a structure that looks like

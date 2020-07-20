@@ -12,6 +12,8 @@ product design. Its product line provides tools for designers, developers, and
 stakeholders to collaborate on designing and building websites, mobile
 applications, and almost anything else that is displayed on a screen.
 
+<!--more-->
+
 The entire company is dispersed across the globe with people across all
 continents and in almost all time zones. There is no central office, but some
 make use of coworking spaces like WeWork. All communication happens on Slack and

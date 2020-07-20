@@ -1,11 +1,23 @@
 <script>
+  import Tag from './Tag.svelte'
   export let post
 </script>
 
-<div>
-  <h2>
-    <a rel="prefetch" href="blog/{post.slug}">{post.title}</a>
+<article class="space-y-4">
+  <h2 class="text-2xl font-bold">
+    <a rel="prefetch" href="/{post.slug}">{post.title}</a>
   </h2>
-  <p>{post.excerpt}</p>
-  <span>{post.printDate}</span>
-</div>
+  <div class="prose">
+    {@html post.excerpt}
+  </div>
+  <div class="flex space-x-4 font-sm">
+    <span>{post.printDate}</span>
+    <ul>
+      {#each post.tags as tag}
+        <li class="inline-block">
+          <Tag tag="{tag}" />
+        </li>
+      {/each}
+    </ul>
+  </div>
+</article>
