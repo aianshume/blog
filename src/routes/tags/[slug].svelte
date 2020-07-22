@@ -12,8 +12,8 @@
 </script>
 
 <script>
-  import Summary from '../../components/Summary.svelte'
   import Container from '../../components/Container.svelte'
+  import Posts from '../../components/Posts.svelte'
 
   export let tag
   export let posts
@@ -21,7 +21,5 @@
 
 <Container>
   <h1 class="text-2xl font-bold">{tag.name}</h1>
-  {#each posts as post}
-    <Summary post="{post}" />
-  {/each}
+  <Posts posts="{posts}" />
 </Container>

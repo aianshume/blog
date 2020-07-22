@@ -11,6 +11,7 @@ posts
       slug: post.slug,
       excerpt: post.excerpt,
       printDate: post.printDate,
+      printReadingTime: post.printReadingTime
     }
   })
   .forEach((post) => {
