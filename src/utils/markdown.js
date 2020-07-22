@@ -31,6 +31,13 @@ renderer.link = (href, title, text) => {
   return html.replace(/^<a /, '<a target="_blank" rel="nofollow" ')
 }
 
+renderer.heading = (text, level) => {
+  const id = slugify(text, {
+    lower: true,
+  })
+  return `<h${level} id="${id}">${text}</h${level}>`
+}
+
 renderer.code = (code, language) => {
   const parser = prism.languages[language] || prism.languages.html
   const highlighted = prism.highlight(code, parser, language)
@@ -53,8 +60,57 @@ export default () => ({
     if (rawContent.indexOf(EXCERPT_SEPARATOR) !== -1) {
       const splittedContent = rawContent.split(EXCERPT_SEPARATOR)
       excerpt = marked(splittedContent[0])
-      content = splittedContent[1]
     }
+
+    let tokens = [{
+      type: 'html',
+      raw: `<div class="section" data-id="">`,
+      text: `<div class="section" data-id="">`,
+    }]
+    let open = false
+
+    // Wrap all headings and content up to the next heading in a div
+    marked.lexer(rawContent).forEach((token) => {
+      if (token.type === 'heading') {
+        const id = slugify(token.text, {
+          lower: true,
+        })
+        if (open) {
+          tokens.push({
+            type: 'html',
+            raw: '</div>',
+            text: '</div>',
+          })
+        }
+        tokens.push({
+          type: 'html',
+          raw: `<div class="section" data-id="${id}">`,
+          text: `<div class="section" data-id="${id}">`,
+        })
+        open = true
+      }
+      tokens.push(token)
+    })
+
+    if (open) {
+      tokens.push({
+        type: 'html',
+        raw: '</div>',
+        text: '</div>',
+      })
+    }
+    console.log(tokens)
+
+    const tableOfContents = marked
+      .lexer(rawContent)
+      .filter(({ type }) => type === 'heading')
+      .map(({ depth, text }) => ({
+        depth,
+        text,
+        slug: slugify(text, {
+          lower: true,
+        }),
+      }))
 
     const modifiedTags = tags.map((tag) => ({
       name: tag,
@@ -62,7 +118,7 @@ export default () => ({
         lower: true,
       }),
     }))
-    const html = marked(content)
+    const html = marked.parser(tokens)
     const readingStats = readingTime(content)
     const printReadingTime = readingStats.text
     const printDate = formatDate(new Date(date), 'MMMM D, YYYY')
@@ -76,6 +132,7 @@ export default () => ({
       excerpt,
       printDate,
       printReadingTime,
+      tableOfContents,
       ...rest,
     })
 
