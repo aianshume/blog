@@ -1,19 +1,16 @@
 <script>
-  import Logo from './Logo.svelte'
   import Nav from './Nav.svelte'
+  import Container from './Container.svelte'
+  import ThemeChanger from './ThemeChanger.svelte'
 </script>
 
-<header>
-  <Logo />
-  <Nav />
+<header class="sticky top-0 py-4 my-8 bg-white">
+  <Container>
+    <div class="flex items-center">
+      <Nav />
+      <div class="ml-auto">
+      <ThemeChanger />
+      </div>
+    </div>
+  </Container>
 </header>
-
-<style>
-  header {
-    display: flex;
-    margin: 0 auto;
-    max-width: 1400px;
-    padding: 2em;
-    width: 100%;
-  }
-</style>

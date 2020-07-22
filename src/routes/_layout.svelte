@@ -4,12 +4,7 @@
 
 <div class="layout">
   <Header />
-
   <main>
     <slot />
   </main>
-
-  <footer>
-  </footer>
 </div>
-
