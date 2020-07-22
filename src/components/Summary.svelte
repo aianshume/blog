@@ -12,6 +12,7 @@
   </div>
   <div class="flex space-x-4 font-sm">
     <span>{post.printDate}</span>
+    <span>{post.printReadingTime}</span>
     <ul>
       {#each post.tags as tag}
         <li class="inline-block">
