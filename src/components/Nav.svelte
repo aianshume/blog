@@ -3,8 +3,8 @@
   const { page } = stores()
 </script>
 
-<nav>
-  <a class="{page.path === '/' ? 'selected' : ''}" href=".">home</a>
-  <a class="{page.path === '/about' ? 'selected' : ''}" href="about">About</a>
-  <a rel="prefetch" class="{page.path === '/tags' ? 'selected' : ''}" href="tags">Tags</a>
+<nav class="space-x-2">
+  <a class:selected="{page.path === '/'}" href=".">Home</a>
+  <a class:selected="{page.path === '/about'}" href="about">About</a>
+  <a rel="prefetch" class:selected="{page.path === '/tags'}" href="tags">Tags</a>
 </nav>
