@@ -99,7 +99,6 @@ export default () => ({
         text: '</div>',
       })
     }
-    console.log(tokens)
 
     const tableOfContents = marked
       .lexer(rawContent)
