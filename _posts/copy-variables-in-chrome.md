@@ -18,16 +18,16 @@ surprisingly easy.
 1. Open up the
    [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
    tab within the Chrome inspector.
-   ![Step one, selecting the React tab within the Google Chrome developer tools](step1.png)
+   ![Step one, selecting the React tab within the Google Chrome developer tools](../public/assets/images/posts/copy-variables-in-chrome/step1.png)
 1. Select the component or element which contains the property you want to copy.
-   ![Step two and three, selecting a component and then right clicking specific indicator](step23.png)
+   ![Step two and three, selecting a component and then right clicking specific indicator](../public/assets/images/posts/copy-variables-in-chrome/step23.png)
 1. Right-click the `{…}` and select **Store as global variable** from the menu.
 1. Navigate to the console tab.
-   ![Step four and five, navigating to the console tab and then taking notice of a new variable.](step45.png)
+   ![Step four and five, navigating to the console tab and then taking notice of a new variable.](../public/assets/images/posts/copy-variables-in-chrome/step45.png)
 1. You will notice a global variable was added with a naming convention similar
    to `$tmp` or `temp1`.
 1. Copy the value to your clipboard by typing `copy($tmp)` into the console.
-   ![Step 6, copying the value to your clipboard](step6.png)
+   ![Step 6, copying the value to your clipboard](../public/assets/images/posts/copy-variables-in-chrome/step6.png)
 
 What’s great about this trick is almost any value which has the `{…}` beside it
 within the Chrome inspector can be set as a global variable. Therefore this
