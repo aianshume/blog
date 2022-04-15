@@ -32,7 +32,14 @@
     "jsx": "preserve",
     "noEmit": true,
     "isolatedModules": true,
-    "incremental": true
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@images/*": ["src/images/*"],
+      "@css/*": ["src/css/*"],
+      "@utils/*": ["src/utils/*"]
+    }
   },
   "exclude": ["./out/**/*", "./node_modules/**/*"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]

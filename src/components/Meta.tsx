@@ -1,24 +1,20 @@
-import React from 'react';
-
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-
-import { AppConfig } from '../utils/AppConfig';
-import { addTrailingSlash } from '../utils/Url';
+import { AppConfig } from '@utils/AppConfig'
+import { addTrailingSlash } from '@utils/Url'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import React from 'react'
 
 type IMetaProps = {
-  title: string;
-  description: string;
-  canonical?: string;
+  title: string
+  description: string
+  canonical?: string
   post?: {
-    image: string;
-    date: string;
-    modified_date: string;
-  };
-};
+    date: string
+  }
+}
 
 const Meta = (props: IMetaProps) => {
-  const router = useRouter();
+  const router = useRouter()
 
   return (
     <>
@@ -87,11 +83,6 @@ const Meta = (props: IMetaProps) => {
           <>
             <meta property="og:type" content="article" key="og:type" />
             <meta
-              property="og:image"
-              content={`${AppConfig.url}${router.basePath}${props.post.image}`}
-              key="og:image"
-            />
-            <meta
               name="twitter:card"
               content="summary_large_image"
               key="twitter:card"
@@ -100,11 +91,6 @@ const Meta = (props: IMetaProps) => {
               property="article:published_time"
               content={new Date(props.post.date).toISOString()}
               key="article:published_time"
-            />
-            <meta
-              property="article:modified_time"
-              content={new Date(props.post.modified_date).toISOString()}
-              key="article:modified_time"
             />
             <script
               type="application/ld+json"
@@ -134,11 +120,7 @@ const Meta = (props: IMetaProps) => {
               "name": "${AppConfig.author}"
             },
             "headline": "${props.title} | ${AppConfig.site_name}",
-            "image": ["${AppConfig.url}${router.basePath}${props.post.image}"],
             "datePublished": "${new Date(props.post.date).toISOString()}",
-            "dateModified": "${new Date(
-              props.post.modified_date
-            ).toISOString()}",
             "mainEntityOfPage": {
               "@type": "WebPage",
               "@id": "${AppConfig.url}${router.basePath}${addTrailingSlash(
@@ -154,7 +136,7 @@ const Meta = (props: IMetaProps) => {
         )}
       </Head>
     </>
-  );
-};
+  )
+}
 
-export { Meta };
+export { Meta }

@@ -18,10 +18,6 @@ user. I hope by you reading through this article; you'll have a better
 understanding of how to dissect a problem you may be encountering. I know when I
 was handed the ticket to implement this functionality, it was intimidating.
 
-<!--more-->
-
-{{< toc >}}
-
 After sitting down and thinking about how to approach this problem, I concluded
 that a higher-order component would handle the business logic and then pass the
 required data down to a stateless component. I came to this conclusion by
@@ -59,10 +55,10 @@ Both of these values exist within the global state so that I can pass these
 properties from a parent component and down to the view without additional data
 transformation.
 
-```js
+```ts
 type Props = {
-  selectedLayer?: Layer,
-  hoveredLayer?: Layer,
+  selectedLayer?: Layer
+  hoveredLayer?: Layer
 }
 ```
 
@@ -72,7 +68,7 @@ time, so the clear choice here is to use an array of objects. Now I need to
 figure out the shape of each measurement.
 
 ```js
-type Measurements Measurement[]
+type Measurements = Measurement[]
 ```
 
 Each measurement must have a direction which is either top, right, bottom or
@@ -82,18 +78,18 @@ direction. Next, I need a start and end position for each measurement. It
 contains an an x, y coordinate with either a width or height, depending on
 whether it’s vertical or horizontal.
 
-```js
+```ts
 type Position = {
-  top: number,
-  left: number,
-  width?: number,
-  height?: number,
+  top: number
+  left: number
+  width?: number
+  height?: number
 }
 
 type Measurement = {
-  direction: number,
-  label: Label,
-  position: Position,
+  direction: number
+  label: Label
+  position: Position
 }
 ```
 
@@ -102,14 +98,14 @@ distance. Whenever the measurement is inside the artboard, the label is
 positioned in the middle of the measurement line. To position the label, I’ll
 need an x and y coordinate.
 
-```js
+```ts
 type Point = {
-  x: number,
+  x: number
   y: number
 }
 
-type Label {
-  point: Point,
+type Label = {
+  point: Point
   value: string
 }
 ```
@@ -123,31 +119,31 @@ feel way more confident in your codebase.
 
 Here is the entire structure:
 
-```js
+```ts
 type Point = {
-  x: number,
+  x: number
   y: number
 }
 
-type Label {
-  point: Point,
+type Label = {
+  point: Point
   value: string
 }
 
-type Position {
-  top: number,
-  left: number,
-  width?: number,
+type Position = {
+  top: number
+  left: number
+  width?: number
   height?: number
 }
 
-type Measurement {
+type Measurement = {
   direction: number
-  label: Label,
+  label: Label
   position: Position
 }
 
-type Measurements Measurement[]
+type Measurements = Measurement[]
 ```
 
 ## The Business Logic
@@ -176,13 +172,13 @@ The properties I worry about for each layer are the width, height, and x, y
 coordinates. Here is a simplification of the layer shape, but it gives you an
 idea of some basic properties it contains.
 
-```js
+```ts
 type Layer = {
-  id: number,
-  width: number,
-  height: number,
-  x: number,
-  y: number,
+  id: number
+  width: number
+  height: number
+  x: number
+  y: number
 }
 ```
 
@@ -190,7 +186,7 @@ To figure out which path I can take, I started by determining if the layers are
 overlapping by both the x and y-axis. If both of these return true, I know which
 path I’ll need to follow.
 
-```js
+```ts
 // Determine if the x axis plus width overlap
 const xIntersects = (layer1: Layer, layer2: Layer): boolean =>
   Math.max(
@@ -220,7 +216,7 @@ one.
 
 {{< figure src="./directions.png" caption="Each direction numbered from one to eight in relation to the center" >}}
 
-```js
+```ts
 const BOTTOM = 5
 const BOTTOM_LEFT = 6
 const BOTTOM_RIGHT = 4
@@ -250,7 +246,7 @@ between the two.
 
 {{< figure src="./angle.png" caption="Two shapes with their centers marked and a line drawn between the two to demonstrate the angle" >}}
 
-```js
+```ts
 const getDirection = (layer1: Layer, layer2: Layer): number => {
   // Get the x and y center of each layer
   const layer1Center: Point = getCenter(layer1)
@@ -288,7 +284,7 @@ const getCenter = (layer: Layer): Point => ({
 
 Now that the logic is out of the way I can carry on with actually using it.
 
-```js
+```ts
 const layerOverlapsLayer = overlaps(selected, highlighted)
 const cardinal = getDirection(selected, highlighted)
 ```
@@ -301,7 +297,7 @@ and build up each measurement. This achieved by calculating the minimum and
 maximum values for each side, and then subtracting the same side of the opposite
 layer.
 
-```js
+```ts
 const top = Math.abs(layer1.y - layer2.y)
 const right = Math.abs(layer1.x + layer1.width - (layer2.x + layer2.width))
 const bottom = Math.abs(layer1.y + layer1.height - (layer2.y + layer2.height))
@@ -318,7 +314,7 @@ facing sides.
 
 {{< figure src="./intersection.png" caption="Two layers which intersect" >}}
 
-```js
+```ts
 const intersection = (layer1: Layer, layer2: Layer): Point => {
   const xMax = Math.max(layer1.x, layer2.x)
   const yMax = Math.max(layer1.y, layer2.y)
@@ -346,7 +342,7 @@ Now that we have the intersection and offsets, we can use this information to
 can start building out the measurements. I decided to calculate all four sides
 and then only return what is required.
 
-```js
+```ts
 const yMin = Math.min(layer1.y, layer2.y)
 const xMin = Math.min(layer1.x, layer2.x)
 const yHeightMin = Math.min(layer1.y + layer1.height, layer2.y + layer2.height)
@@ -424,7 +420,7 @@ value. When the selected layer is perfectly centred with the hover layer, all
 four measurements will be returned since I cannot successfully determine which
 side the end user wants to see.
 
-```js
+```ts
 if (cardinal === CENTER) {
   return [topMeasurement, rightMeasurement, bottomMeasurement, leftMeasurement]
 }
@@ -433,7 +429,7 @@ if (cardinal === CENTER) {
 When the two layers are not concentric, all sides which extend beyond the
 selected layer need to be omitted from the result.
 
-```js
+```ts
 const measurements: Measurements = []
 
 // Top
@@ -471,7 +467,7 @@ of eight cases to account for, top left, top, top right, right, bottom right,
 bottom, bottom left and left. Since these layers never overlap in any way, I’ll
 never have to worry about calculating the `CENTER`.
 
-```js
+```ts
 const distance = (cardinal, layer1, layer2) => {
   switch (cardinal) {
     case TOP_LEFT:
@@ -518,7 +514,7 @@ past the selected layer. Whenever this was true, I changed the cardinal
 direction to either `TOP`, `RIGHT`, `BOTTOM` or `LEFT`, depending on the
 overlap, and returned the `distance` function.
 
-```js
+```ts
 const xWidth = layer1.x + layer1.width
 const yHeight = layer1.y + layer1.height
 const x2Width = layer2.x + layer2.width
@@ -540,7 +536,7 @@ So far I have thrown example after example at you but haven’t given you an ide
 how it all fits together. In the next example, I put together a super stripped
 down version, so you have an idea of how this all works.
 
-```js
+```tsx
 // composites/measurementHandler.js
 type Props = {
   artboard: Artboard,
@@ -614,7 +610,7 @@ up and close with the design. Since static measurements are used throughout, I
 needed to account for the scale. This is easily obtainable by multiplying each
 measurement x, y, width, and height by the zoom level.
 
-```js
+```ts
 const displayScale = (scale: number, value: number): number => value * scale
 ```
 
@@ -625,8 +621,8 @@ start in a corner of the selected layer. These lines are calculated similarly as
 the measurement lines and are passed down as another property to the
 measurements component. They are simply an array of positions.
 
-```js
-type Dotted []Position
+```ts
+type Dotted = []Position
 ```
 
 ## The View
@@ -638,7 +634,7 @@ guarantee that the result is the same with the same input. With that in mind, I
 wrapped a stateless component in the composite component created in the business
 logic section.
 
-```js
+```tsx
 // components/measurements.js
 import SelectionMeasurementHandler from ‘composites/measurementHandler’
 
@@ -661,7 +657,7 @@ The labels point ends up in the middle between the start and end measurements,
 however, relies on the parent class `measurement--<direction>` to determine if
 the label floats above the line or to the right.
 
-```js
+```tsx
 // components/measurement.js
 import cx from 'classnames'
 
@@ -669,7 +665,7 @@ type Props {
   measurement: Measurement
 }
 
-const Measurement = ({ label, position }:Props) => {
+const Measurement = ({ label, position }: Props) => {
   const classes = cx('measurement', {
     'measurement--top': !!position.top,
     'measurement--right': !!position.right,

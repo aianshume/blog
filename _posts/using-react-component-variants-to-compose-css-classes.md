@@ -47,8 +47,8 @@ const buttonSizeClasses: Record<ButtonSize, string> = {
 }
 
 const buttonVariantClasses: Record<ButtonVariant, string> = {
-  primary: 'bg-blue-700 text-white',
-  secondary: 'border border-gray-300 text-black',
+  primary: 'bg-blue-700 Text-white',
+  secondary: 'border border-gray-300 Text-black',
 }
 ```
 
