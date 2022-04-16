@@ -24,7 +24,8 @@ export const mobileLink = style([
   }),
   {
     ':hover': {
-      backgroundColor: vars.color.white,
+      backgroundColor: vars.color.brand10,
+      color: vars.color.brand70,
     },
   },
 ])
@@ -79,17 +80,6 @@ export const header = sprinkles({
   width: 'full',
 })
 
-export const headerInnerWrapper = style([
-  sprinkles({
-    py: 4,
-  }),
-  {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-])
-
 export const navLink = style([
   sprinkles({
     px: 4,
@@ -101,10 +91,14 @@ export const navLink = style([
       mobile: 'none',
       tablet: 'flex',
     },
-    borderRadius: 'rounded',
+    borderRadius: 'full',
   }),
   {
     ':hover': {
+      color: vars.color.brand70,
+      backgroundColor: vars.color.brand05,
+    },
+    ':focus': {
       color: vars.color.brand70,
       backgroundColor: vars.color.brand05,
     },

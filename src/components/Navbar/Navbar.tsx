@@ -1,3 +1,4 @@
+import { Box } from '@components/Box'
 import { Container } from '@components/Container'
 import { Logo } from '@components/Logo'
 import {
@@ -14,7 +15,6 @@ import { FC, ReactNode, useRef } from 'react'
 import {
   header,
   headerContainer,
-  headerInnerWrapper,
   menuButton,
   menuButtonIcon,
   menuPopover,
@@ -174,14 +174,22 @@ export const Navbar: FC = () => {
     <header className={header} ref={ref}>
       <Container>
         <div className={headerContainer}>
-          <div className={headerInnerWrapper}>
+          <Box
+            py={{
+              mobile: 4,
+              tablet: 6,
+            }}
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+          >
             <Logo />
             <div className="md:hidden">
               <Menu>
                 <MobileMenu />
               </Menu>
             </div>
-          </div>
+          </Box>
           <nav className={nav}>
             {navItems.map(({ label, href }) => (
               <NavLink key={href} href={href}>
