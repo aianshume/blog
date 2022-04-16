@@ -19,10 +19,6 @@ continents and in almost all time zones. There is no central office, but some
 make use of coworking spaces like WeWork. All communication happens on Slack and
 meetings take place on Zoom.
 
-<!--more-->
-
-{{< toc >}}
-
 When I had started back in December 2014, I was number seventy-six, and at the
 time of writing this article, there are well over eight hundred. Many things
 have since changed, and as an organization, it has matured. The company is
@@ -57,7 +53,7 @@ hours while working? No problem! Never have I ever had any of my managers
 question or seem put off by the fact that life sometimes gets in the way. I
 can’t express how great this is! To be able to watch the kiddo for an hour or
 two in the middle of the day has done wonders. If it weren't for this
-flexibility, my wife and I would of either had to find someone to watch him or
+flexibility, my wife, and I would have either had to find someone to watch him or
 one of us would have to take part of the day off.
 
 ### Reap in All the Productivity
@@ -175,7 +171,7 @@ decompress and put work aside before I got home.
 
 ## Making Remote Life Work for You
 
-I see remote work as the future since the goods outweigh the bads by a long
+I see remote work as the future since the goods outweigh the bad's by a long
 shot. You have more freedom and flexibility than you would have in a traditional
 office, but there are a couple of things you should keep in mind before making
 the jump.
@@ -198,7 +194,7 @@ you are asking a question. Try to connect with your team throughout the day to
 let them know when you're in, heading out for the day, or have to step out for a
 bit.
 
-**Get out and exercise.** I’m not sure I can include this since I’ve been
+**Get out and exercise.** I’m not sure if I can include this since I’ve been
 lacking in this department for the past little while. I used to exercise on a
 regular basis until my son was born; however, it’s something I want to get back
 in to. Being cooped up in the house all day takes a toll on your body, and you
