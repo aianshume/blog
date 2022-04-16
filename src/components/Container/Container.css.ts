@@ -6,10 +6,11 @@ export const container = style([
     mx: 'auto',
     px: {
       mobile: 4,
-      tablet: 0,
+      tablet: 8,
+      desktop: 0,
     },
   }),
   {
-    maxWidth: 640,
+    maxWidth: 920,
   },
 ])

@@ -9,7 +9,15 @@ const responsiveAtomicProperties = defineProperties({
   },
   defaultCondition: 'mobile',
   properties: {
-    display: ['none', 'flex', 'block', 'inline', 'grid'],
+    display: [
+      'none',
+      'flex',
+      'block',
+      'inline',
+      'grid',
+      'inline-flex',
+      'inline-block',
+    ],
     flexDirection: ['row', 'column'],
     gridTemplateColumns: vars.gridRepeat,
     justifyContent: [
@@ -37,13 +45,20 @@ const responsiveAtomicProperties = defineProperties({
     width: vars.space,
     height: vars.space,
     zIndex: vars.zIndex,
+    borderRadius: vars.borderRadius,
   },
   shorthands: {
     p: ['paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight'],
     px: ['paddingLeft', 'paddingRight'],
     py: ['paddingTop', 'paddingBottom'],
+    pt: ['paddingTop'],
+    pb: ['paddingBottom'],
     mx: ['marginLeft', 'marginRight'],
     my: ['marginTop', 'marginBottom'],
+    mb: ['marginBottom'],
+    mt: ['marginTop'],
+    ml: ['marginLeft'],
+    mr: ['marginRight'],
     placeItems: ['justifyContent', 'alignItems'],
   },
 })
@@ -57,22 +72,16 @@ const colorAtomicProperties = defineProperties({
   properties: {
     color: vars.color,
     background: vars.color,
+    stroke: vars.color,
   },
   shorthands: {
     bg: ['background'],
   },
 })
 
-const borderRadiusProperties = defineProperties({
-  properties: {
-    borderRadius: vars.borderRadius,
-  },
-})
-
 export const sprinkles = createSprinkles(
   responsiveAtomicProperties,
-  colorAtomicProperties,
-  borderRadiusProperties
+  colorAtomicProperties
 )
 
 export type Sprinkles = Parameters<typeof sprinkles>[0]

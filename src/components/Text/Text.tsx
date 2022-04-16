@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { createElement, HTMLProps } from 'react'
 import { text, TextVariants } from './Text.css'
 
-export type TextProps = Omit<HTMLProps<HTMLElement>, 'size'> &
+export type TextProps = Omit<HTMLProps<HTMLElement>, 'size' | 'color'> &
   TextVariants & {
     as?: keyof JSX.IntrinsicElements
     className?: string

@@ -6,6 +6,29 @@ import { recipe, RecipeVariants } from '@vanilla-extract/recipes'
 export const text = recipe({
   variants: {
     size: {
+      '6xl': style([
+        sprinkles({
+          fontSize: {
+            mobile: '4xl',
+            tablet: '5xl',
+            desktop: '6xl',
+          },
+        }),
+        {
+          lineHeight: 1.2,
+        },
+      ]),
+      '5xl': style([
+        sprinkles({
+          fontSize: {
+            mobile: '4xl',
+            tablet: '5xl',
+          },
+        }),
+        {
+          lineHeight: 1.25,
+        },
+      ]),
       '4xl': style([
         sprinkles({
           fontSize: {
@@ -60,10 +83,7 @@ export const text = recipe({
       ]),
       base: style([
         sprinkles({
-          fontSize: {
-            mobile: 'lg',
-            tablet: 'base',
-          },
+          fontSize: 'base',
         }),
         {
           lineHeight: 1.5,
@@ -71,10 +91,7 @@ export const text = recipe({
       ]),
       sm: style([
         sprinkles({
-          fontSize: {
-            mobile: 'base',
-            tablet: 'sm',
-          },
+          fontSize: 'sm',
         }),
         {
           lineHeight: 1.5,
@@ -82,10 +99,7 @@ export const text = recipe({
       ]),
       xs: style([
         sprinkles({
-          fontSize: {
-            mobile: 'sm',
-            tablet: 'xs',
-          },
+          fontSize: 'xs',
         }),
         {
           lineHeight: 1.5,
@@ -104,9 +118,24 @@ export const text = recipe({
       },
     },
     color: {
-      black: vars.color.black,
-      brand: vars.color.brand,
-      gray: vars.color.gray70,
+      black: sprinkles({
+        color: 'black',
+      }),
+      gray90: sprinkles({
+        color: 'gray90',
+      }),
+      gray70: sprinkles({
+        color: 'gray70',
+      }),
+      gray60: sprinkles({
+        color: 'gray60',
+      }),
+      gray50: sprinkles({
+        color: 'gray50',
+      }),
+      brand70: sprinkles({
+        color: 'brand70',
+      }),
     },
   },
   defaultVariants: {

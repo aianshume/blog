@@ -34,7 +34,7 @@ const Post = (props: PostProps) => (
       <Text as="h1" size="4xl" weight="bold">
         {props.title}
       </Text>
-      <Text as="time" color="gray" size="sm" dateTime={props.date}>
+      <Text as="time" color="gray50" size="sm" dateTime={props.date}>
         {format(new Date(props.date), 'LLLL d, yyyy')}
       </Text>
       <div

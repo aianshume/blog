@@ -14,14 +14,14 @@ export const PostItem = ({ title, date, slug }: PostItemProps) => {
     <li className={listItem}>
       <Link href={slug}>
         <a className={postLink}>
-          <Text as="span" size="base" className={postTitle} weight="semibold">
+          <Text as="span" size="lg" className={postTitle} weight="semibold">
             {title}
           </Text>
           <Text
             as="time"
             className={postDate}
             dateTime={date}
-            color="gray"
+            color="gray60"
             size="sm"
           >
             {format(new Date(date), 'LLL yyyy')}

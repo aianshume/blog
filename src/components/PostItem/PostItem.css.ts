@@ -24,14 +24,22 @@ export const postLink = style([
     alignItems: {
       tablet: 'baseline',
     },
-    color: 'black',
+    color: 'gray90',
     px: 5,
     py: 3,
     mx: '-5',
-    borderRadius: 'rounded',
+    borderRadius: {
+      tablet: 'full',
+    },
   }),
   {
     ':hover': {
+      backgroundColor: vars.color.brand10,
+    },
+    ':focus': {
+      backgroundColor: vars.color.brand10,
+    },
+    ':active': {
       backgroundColor: vars.color.brand05,
     },
   },
