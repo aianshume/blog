@@ -1,48 +1,20 @@
 {
-  "name": "blog",
-  "version": "1.0.0",
-  "description": "My personal blog",
-  "main": "index.js",
+  "name": "@example/blog",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "start": "cross-env NODE_ENV=development hugo server --buildFuture",
-    "build": "cross-env NODE_ENV=production hugo --gc --minify",
-    "build:preview": "cross-env NODE_ENV=production hugo --gc --minify --buildFuture",
-    "format": "prettier --write assets/**/*.{js,css} {content,archetypes,layouts}/**/*.{md,html} tailwind.config.js postcss.config.js ./**/*.toml",
-    "prepare": "husky install"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/devinschulz/blog.git"
-  },
-  "author": "Devin Schulz",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/devinschulz/blog/issues"
-  },
-  "homepage": "https://github.com/devinschulz/blog#readme",
   "devDependencies": {
-    "@tailwindcss/typography": "^0.4.1",
-    "cross-env": "^7.0.3",
-    "cssnano": "^5.1.7",
-    "hugo-bin": "^0.83.1",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.3.7",
-    "postcss-cli": "^9.1.0",
-    "postcss-color-function": "^4.1.0",
-    "postcss-import": "^14.1.0",
-    "postcss-mixins": "^9.0.2",
-    "postcss-nested": "^5.0.6",
-    "postcss-preset-env": "^7.4.3",
-    "postcss-simple-vars": "^6.0.3",
-    "prettier": "^2.6.2",
-    "prettier-plugin-go-template": "0.0.12",
-    "prettier-plugin-toml": "0.3.1",
-    "tailwindcss": "^2.2.19"
+    "@astrojs/preact": "^0.1.1",
+    "@astrojs/tailwind": "^0.2.0",
+    "astro": "^1.0.0-beta.14",
+    "tailwindcss": "^3.0.24"
   },
   "dependencies": {
-    "@hotwired/turbo": "^7.1.0"
-  },
-  "lint-staged": {
-    "*.{js,css,md,toml}": "prettier --write"
+    "preact": "^10.7.1"
   }
 }

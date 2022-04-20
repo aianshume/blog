@@ -4,15 +4,7 @@
   "singleQuote": true,
   "embeddedLanguageFormatting": "auto",
   "trailingComma": "all",
-  "bracketSpacing": false,
+  "bracketSpacing": true,
   "proseWrap": "always",
-  "jsxBracketSameLine": false,
-  "overrides": [
-    {
-      "files": ["*.html"],
-      "options": {
-        "parser": "go-template"
-      }
-    }
-  ]
+  "jsxBracketSameLine": false
 }
