@@ -1,0 +1,31 @@
+---
+import Container from './Container.astro'
+import Logo from './Logo.astro'
+
+export interface Props {
+  activeNavLink?: 'about' | 'posts' | 'home'
+}
+
+const {activeNavLink} = Astro.props
+
+const items = [
+  { href: '/about', label: 'About' },
+  { href: '/posts', label: 'Posts' },
+]
+---
+
+<header>
+  <Container>
+    <Logo />
+    <nav>
+    {items.map(({ href, label }) => (
+      <a
+        href={href}
+        class:list={[activeNavLink === href && 'active']}
+      >
+        {label}
+      </a>
+    ))}
+    </nav>
+  </Container>
+</header>
