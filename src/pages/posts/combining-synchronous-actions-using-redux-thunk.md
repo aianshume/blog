@@ -1,4 +1,6 @@
 ---
+setup: |
+  import Layout from '../../layouts/BlogPost.astro'
 title: Combining Synchronous Actions Using Redux Thunk
 date: 2018-07-09T16:20:02-04:00
 description:

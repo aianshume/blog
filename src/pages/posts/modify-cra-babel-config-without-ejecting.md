@@ -1,10 +1,13 @@
 ---
+setup: |
+  import Layout from '../../layouts/BlogPost.astro'
 title: Modify Create React App's Babel Configuration Without Ejecting
 date: 2020-02-02
 description:
   Learn how to modify the underlying Create React App configuration with
   customize-cra to include new babel plugins. All without having to eject.
 tags: [React, Babel]
+featured: true
 ---
 
 I love using [Create React App](https://github.com/facebook/create-react-app) to
@@ -65,7 +68,7 @@ what we need to add both plugins.
 Open `config-overrides.js` and add the following:
 
 ```js
-const {override, addBabelPlugins} = require('customize-cra')
+const { override, addBabelPlugins } = require('customize-cra')
 
 module.exports = override(
   addBabelPlugins(

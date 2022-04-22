@@ -1,4 +1,6 @@
 ---
+setup: |
+  import Layout from '../../layouts/BlogPost.astro'
 title: Restrictions While Styling Visited Links
 description:
   Learn about what the :visited pseudo-class selector is and its limitations
