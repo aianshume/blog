@@ -1,0 +1,24 @@
+---
+export interface Props {
+  title: string;
+  author: string;
+  publishDate: string;
+  heroImage: string;
+  alt: string;
+}
+
+const { title, publishDate, heroImage, alt } = Astro.props;
+---
+
+<article class="content">
+  <header>
+    {heroImage && (
+      <img width="720" height="420" loading="lazy" src={heroImage} alt={alt} />
+    )}
+    <p class="publish-date">{publishDate}</p>
+    <h1 class="title">{title}</h1>
+  </header>
+  <main>
+    <slot></slot>
+  </main>
+</article>

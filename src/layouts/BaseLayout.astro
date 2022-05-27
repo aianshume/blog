@@ -1,0 +1,22 @@
+---
+import { Props as AstroSeoProps, SEO } from "astro-seo";
+import "../styles/blog.css";
+
+export interface Props extends AstroSeoProps {}
+
+const props = Astro.props as Props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f9c412" />
+    <SEO {...props} />
+  </head>
+  <body
+    class="antialiased text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-900"
+  >
+    <slot></slot>
+  </body>
+</html>
