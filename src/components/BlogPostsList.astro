@@ -1,0 +1,36 @@
+---
+import BlogPostPreview, {
+  Props as BlogPostPreviewProps,
+} from "./BlogPostPreview.astro";
+
+export interface Props {
+  posts: BlogPostPreviewProps["post"][];
+}
+
+const { posts } = Astro.props as Props;
+
+let postsByYear = posts.reduce((acc, post) => {
+  const year = new Date(post.frontmatter.publishDate).getFullYear();
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(post);
+  return acc;
+}, {});
+
+// Sort by year since object order is not guaranteed
+postsByYear = Object.entries(postsByYear).sort((a, b) => +b[0] - +a[0]);
+---
+
+<div class="space-y-6">
+  {postsByYear.map(([year, posts]) => (
+    <div>
+      <h2 class="font-semibold text-2xl md:3xl mb-4">{year}</h2>
+      <ul class="space-y-2">
+        {posts.map((post) => (
+          <BlogPostPreview post={post} />
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>

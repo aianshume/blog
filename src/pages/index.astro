@@ -1,11 +1,11 @@
 ---
-import BlogPostPreview from "../components/BlogPostPreview.astro";
+import BlogPostsList from "../components/BlogPostsList.astro";
 import Container from "../components/Container.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const title = "Example Blog";
 const description = "The perfect starter for your perfect blog.";
-const permalink = "https://example.com/";
+const permalink = "https://devinschulz.com/";
 
 let allPosts = await Astro.glob("./posts/*.md");
 allPosts = allPosts.sort(
@@ -19,6 +19,7 @@ allPosts = allPosts.sort(
   <Container>
     <h1 class="latest">{title}</h1>
     <p>{description}</p>
-    {allPosts.map((post) => <BlogPostPreview post={post} />)}
+
+    <BlogPostsList posts={allPosts} />
   </Container>
 </BaseLayout>
